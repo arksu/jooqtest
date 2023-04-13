@@ -1,0 +1,16 @@
+server:
+  port: 8021
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5401/db
+    username: db
+    password: db
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    schemas: jooqtest
+
+
+logging:
+  level:
+    org.jooq.tools.LoggerListener : debug

@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres
+    container_name: jooqtest-db
+    command: postgres -c 'max_connections=999'
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: db
+      POSTGRES_USER: db
+      POSTGRES_DB: db
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - 5401:5432
+
+  adminer:
+    image: adminer
+    container_name: jooqtest-adminer
+    restart: unless-stopped
+    ports:
+      - 8221:8080
+
+volumes:
+  postgres:
+    name: jooqtest-db
+    driver: local
