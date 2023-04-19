@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class JooqtestApplication
+class JooqTestApplication
 
 fun main(args: Array<String>) {
-	runApplication<JooqtestApplication>(*args)
+	runApplication<JooqTestApplication>(*args)
 }

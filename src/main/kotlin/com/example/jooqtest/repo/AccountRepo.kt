@@ -5,6 +5,7 @@ import com.example.jooq.tables.pojos.Account
 import com.example.jooqtest.controller.dto.AccountRequestDTO
 import org.jooq.DSLContext
 import org.springframework.stereotype.Repository
+import java.util.*
 
 @Repository
 class AccountRepo(
@@ -20,6 +21,12 @@ class AccountRepo(
             .set(ACCOUNT.CITY, request.city)
             .set(ACCOUNT.SEX, request.sex)
             .returning()
-            .fetchOneInto(Account::class.java)!!
+            .fetchSingleInto(Account::class.java)
+    }
+
+    fun findById(id: UUID): Account? {
+        return dslContext.select(ACCOUNT)
+            .where(ACCOUNT.ID.eq(id))
+            .fetchOneInto(Account::class.java)
     }
 }
